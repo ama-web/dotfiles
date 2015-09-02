@@ -1,0 +1,6 @@
+neobundle.vim
+neosnippet.vim
+nerdtree
+tcomment_vim
+vim-indent-guides
+vim-trailing-whitespace
