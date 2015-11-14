@@ -1,0 +1,134 @@
+"
+" Plugins setting
+"
+
+
+" Align
+" Align を日本語環境で使用するための設定
+let g:Align_xstrlen = 3
+
+
+" IndentLine
+let g:indentLine_enabled=1
+" タブ用のガイド
+set list listchars=tab:\|\
+
+
+" grep
+" 検索外のディレクトリ, ファイルパターン
+let Grep_Skip_Dirs = '.svn .git .hg'
+let Grep_Skip_Files = '*.bak *~'
+
+
+" " surround.vim
+" " s, ss で選択範囲を指定文字でくくる
+" nmap s <Plug>Ysurround
+" nmap ss <Plug>Yssurround
+" let g:surround_{char2nr('e')} = 'begin \r end'
+" let g:surround_{char2nr('d')} = 'do \r end'
+" let g:surround_{char2nr('-')} = ':\r'
+
+
+" caw.vim
+nmap <C-_> <Plug>(caw:i:toggle)
+vmap <C-_> <Plug>(caw:i:toggle)
+
+
+" neocomplete
+if has('lua')
+  let g:neocomplete#enable_at_startup  = 1
+  let g:neocomplete#enable_ignore_case = 1
+  let g:neocomplete#enable_smart_case  = 1
+  if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+  endif
+  let g:neocomplete#keyword_patterns._ = '\h\w*'
+
+  " neocomplete と clang_complete を併用するための設定
+"   let g:marching_enable_neocomplete = 1
+"   if !exists('g:neocomplete#force_omni_input_patterns')
+"     @let g:neocomplete#force_omni_input_patterns = {}
+"   endif
+"   let g:neocomplete#force_overwrite_completefunc = 1
+"   let g:neocomplete#force_omni_input_patterns.c =
+"     \ '[^.[:digit:] *\t]\%(\.\|->\)'
+"   let g:neocomplete#force_omni_input_patterns.cpp =
+"     \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+"   if has('mac')
+"     let g:neocomplete#force_omni_input_patterns.objc =
+"       \ '[^.[:digit:] *\t]\%(\.\|->\)'
+"     let g:neocomplete#force_omni_input_patterns.objcpp =
+"       \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+"   endif
+endif
+
+
+" neosnippet
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+
+
+" auto-ctags
+" let g:auto_ctags = 1
+
+
+" NERDTree
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+" 隠しファイルを表示する
+let NERDTreeShowHidden=1
+" 引数なしで実行した時に、NERDTree を実行する
+let file_name=expand('%:p')
+" デフォルトでツリー表示
+" autocmd VimEnter * execute 'NERDTree'
+" 他のバッファをすべて閉じた時に NERDTree が開いていたら一緒に閉じる
+autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTreeType') && b:NERDTreeType == 'primary') | q | endif
+
+
+" tagbar
+if has('win32unix') || has('win64unix')
+  let g:tagbar_ctags_bin = '/usr/bin/ctags'
+endif
+nn <silent> <Leader>t :TagbarToggle<CR>
+" デフォルトで表示
+" autocmd VimEnter * execute 'Tagbar'
+
+
+" errormarker.vim
+let g:errormarker_disablemappings = 1
+" nmap <silent> <unique> <Leader>ec :ErrorAtCursor<CR>
+
+
+" syntastic
+" エラー行を sing で表示
+let g:syntastic_enable_signs = 1
+" 可能なら highlight 表示
+let g:syntastic_enable_highlighting = 1
+" 自動的に開いたり閉じたり
+let g:syntastic_auto_loc_list = 1
+" Java
+let g:syntastic_java_javac_config_file_enabled = 1
+let g:syntastic_java_javac_config_file = '$HOME/.syntastic_javac_config'
+
+
+" sidepanel.vim
+" 有効にするプラグインを指定
+let g:sidepanel_config = {}
+let g:sidepanel_config['nerdtree'] = {'toggle': ['NERDTreeToggle']}
+let g:sidepanel_config['tagbar'] = {}
+" 表示位置とサイズを変更
+let g:sidepanel_pos = 'left'
+let g:sidepanel_width = 26
+
+
+" vim-cppenhanced-highlight - C++11/14 のシンタックスを適用
+let g:cpp_class_scope_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+
+
+" java.vim
+" 関数を強調表示
+let java_highlight_functions="indent"
+let java_highlight_functions="style"
+" java.lang.* を強調表示
+let java_highlight_java_lang_ids=1
+

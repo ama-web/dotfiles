@@ -1,0 +1,1 @@
+/home/kasahara2/dotfiles/.vim
