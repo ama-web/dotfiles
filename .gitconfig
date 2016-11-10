@@ -1,8 +1,0 @@
-[user]
-	email = ama.web.create@gmail.com
-	name = ama.web.create
-[color]
-	ui = true
-[alias]
-	all-log = log --oneline --decorate --graph --branches --tags --remotes
-	graph = log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short
